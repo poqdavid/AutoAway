@@ -21,14 +21,15 @@
 #define TS3_MAX_SIZE_PLUGIN_COMMAND 1024*8
 #define TS3_MAX_SIZE_VIRTUALSERVER_HOSTBANNER_GFX_URL 2000
 
+
 enum GroupShowNameTreeMode {
-	GroupShowNameTreeMode_NONE = 0, //dont group show name
+	GroupShowNameTreeMode_NONE= 0, //dont group show name
 	GroupShowNameTreeMode_BEFORE,  //show group name before client name
 	GroupShowNameTreeMode_BEHIND   //show group name behind client name
 };
 
 enum PluginTargetMode {
-	PluginCommandTarget_CURRENT_CHANNEL = 0,                  //send plugincmd to all clients in current channel
+	PluginCommandTarget_CURRENT_CHANNEL=0,                  //send plugincmd to all clients in current channel
 	PluginCommandTarget_SERVER,                             //send plugincmd to all clients on server
 	PluginCommandTarget_CLIENT,                             //send plugincmd to all given client ids
 	PluginCommandTarget_CURRENT_CHANNEL_SUBSCRIBED_CLIENTS, //send plugincmd to all subscribed clients in current channel
@@ -36,20 +37,20 @@ enum PluginTargetMode {
 };
 
 enum {
-	SERVER_BINDING_VIRTUALSERVER = 0,
-	SERVER_BINDING_SERVERQUERY = 1,
-	SERVER_BINDING_FILETRANSFER = 2,
+	SERVER_BINDING_VIRTUALSERVER=0,
+	SERVER_BINDING_SERVERQUERY  =1,
+	SERVER_BINDING_FILETRANSFER =2,
 };
 
 enum HostMessageMode {
-	HostMessageMode_NONE = 0,               //dont display anything
+	HostMessageMode_NONE=0,               //dont display anything
 	HostMessageMode_LOG,                  //display message inside log
 	HostMessageMode_MODAL,                //display message inside a modal dialog
 	HostMessageMode_MODALQUIT             //display message inside a modal dialog and quit/close server/connection
 };
 
 enum HostBannerMode {
-	HostBannerMode_NO_ADJUST = 0,           //Do not adjust
+	HostBannerMode_NO_ADJUST=0,           //Do not adjust
 	HostBannerMode_ADJUST_IGNORE_ASPECT,  //Adjust but ignore aspect ratio
 	HostBannerMode_ADJUST_KEEP_ASPECT,    //Adjust and keep aspect ratio
 };
@@ -66,7 +67,7 @@ enum AwayStatus {
 
 enum CommandLinePropertiesRare {
 #ifdef SERVER
-	COMMANDLINE_CREATE_DEFAULT_VIRTUALSERVER = 0,    //create default virtualserver
+	COMMANDLINE_CREATE_DEFAULT_VIRTUALSERVER= 0,    //create default virtualserver
 	COMMANDLINE_MACHINE_ID,                         //machine id (starts only virtualserver with given machineID
 	COMMANDLINE_DEFAULT_VOICE_PORT,
 	COMMANDLINE_VOICE_IP,
@@ -99,13 +100,13 @@ enum CommandLinePropertiesRare {
 	COMMANDLINE_QUERY_SKIPBRUTEFORCECHECK,
 #endif
 #else
-	COMMANDLINE_NOTHING = 0,
+	COMMANDLINE_NOTHING=0,
 #endif
 	COMMANDLINE_ENDMARKER_RARE,
 };
 
 enum ServerInstancePropertiesRare {
-	SERVERINSTANCE_DATABASE_VERSION = 0,
+	SERVERINSTANCE_DATABASE_VERSION= 0,
 	SERVERINSTANCE_FILETRANSFER_PORT,
 	SERVERINSTANCE_SERVER_ENTROPY,
 	SERVERINSTANCE_MONTHLY_TIMESTAMP,
@@ -125,7 +126,7 @@ enum ServerInstancePropertiesRare {
 };
 
 enum VirtualServerPropertiesRare {
-	VIRTUALSERVER_DUMMY_0 = VIRTUALSERVER_ENDMARKER,
+	VIRTUALSERVER_DUMMY_0= VIRTUALSERVER_ENDMARKER,
 	VIRTUALSERVER_DUMMY_1,
 	VIRTUALSERVER_DUMMY_2,
 	VIRTUALSERVER_DUMMY_3,
@@ -140,11 +141,11 @@ enum VirtualServerPropertiesRare {
 	VIRTUALSERVER_FILEBASE,                                    //not available to clients, stores the folder used for file transfers
 	VIRTUALSERVER_DEFAULT_SERVER_GROUP,                        //the client permissions server group that a new client gets assigned
 	VIRTUALSERVER_DEFAULT_CHANNEL_GROUP,                       //the channel permissions group that a new client gets assigned when joining a channel
-	VIRTUALSERVER_FLAG_PASSWORD,                               //only available on request (=> requestServerVariables)
+	VIRTUALSERVER_FLAG_PASSWORD,                               //only available on request (=> requestServerVariables) 
 	VIRTUALSERVER_DEFAULT_CHANNEL_ADMIN_GROUP,                 //the channel permissions group that a client gets assigned when creating a channel
 	VIRTUALSERVER_MAX_DOWNLOAD_TOTAL_BANDWIDTH,                //only available on request (=> requestServerVariables)
 	VIRTUALSERVER_MAX_UPLOAD_TOTAL_BANDWIDTH,                  //only available on request (=> requestServerVariables)
-	VIRTUALSERVER_HOSTBANNER_URL,                              //available when connected, always up-to-date
+	VIRTUALSERVER_HOSTBANNER_URL,                              //available when connected, always up-to-date 
 	VIRTUALSERVER_HOSTBANNER_GFX_URL,                          //available when connected, always up-to-date
 	VIRTUALSERVER_HOSTBANNER_GFX_INTERVAL,                     //available when connected, always up-to-date
 	VIRTUALSERVER_COMPLAIN_AUTOBAN_COUNT,                      //only available on request (=> requestServerVariables)
@@ -158,9 +159,9 @@ enum VirtualServerPropertiesRare {
 	VIRTUALSERVER_ANTIFLOOD_POINTS_NEEDED_IP_BLOCK,            //only available on request (=> requestServerVariables)
 	VIRTUALSERVER_CLIENT_CONNECTIONS,                          //only available on request (=> requestServerVariables)
 	VIRTUALSERVER_QUERY_CLIENT_CONNECTIONS,                    //only available on request (=> requestServerVariables)
-	VIRTUALSERVER_HOSTBUTTON_TOOLTIP,                          //available when connected, always up-to-date
-	VIRTUALSERVER_HOSTBUTTON_URL,                              //available when connected, always up-to-date
-	VIRTUALSERVER_HOSTBUTTON_GFX_URL,                          //available when connected, always up-to-date
+	VIRTUALSERVER_HOSTBUTTON_TOOLTIP,                          //available when connected, always up-to-date 
+	VIRTUALSERVER_HOSTBUTTON_URL,                              //available when connected, always up-to-date 
+	VIRTUALSERVER_HOSTBUTTON_GFX_URL,                          //available when connected, always up-to-date 
 	VIRTUALSERVER_QUERYCLIENTS_ONLINE,                         //only available on request (=> requestServerVariables)
 	VIRTUALSERVER_DOWNLOAD_QUOTA,                              //only available on request (=> requestServerVariables)
 	VIRTUALSERVER_UPLOAD_QUOTA,                                //only available on request (=> requestServerVariables)
@@ -200,7 +201,7 @@ enum VirtualServerPropertiesRare {
 };
 
 enum ChannelPropertiesRare {
-	CHANNEL_DUMMY_2 = CHANNEL_ENDMARKER,
+	CHANNEL_DUMMY_2= CHANNEL_ENDMARKER,
 	CHANNEL_DUMMY_3,
 	CHANNEL_DUMMY_4,
 	CHANNEL_DUMMY_5,
@@ -220,7 +221,7 @@ enum ChannelPropertiesRare {
 };
 
 enum ClientPropertiesRare {
-	CLIENT_DUMMY_3 = CLIENT_ENDMARKER,
+	CLIENT_DUMMY_3= CLIENT_ENDMARKER,
 	CLIENT_DUMMY_4,
 	CLIENT_DUMMY_5,
 	CLIENT_DUMMY_6,
@@ -264,7 +265,7 @@ enum ClientPropertiesRare {
 };
 
 enum ConnectionPropertiesRare {
-	CONNECTION_DUMMY_0 = CONNECTION_ENDMARKER,
+	CONNECTION_DUMMY_0= CONNECTION_ENDMARKER,
 	CONNECTION_DUMMY_1,
 	CONNECTION_DUMMY_2,
 	CONNECTION_DUMMY_3,
@@ -288,38 +289,38 @@ enum LicenseViolationType {
 };
 
 enum BBCodeTags {
-	BBCodeTag_B = 0x00000001,
-	BBCodeTag_I = 0x00000002,
-	BBCodeTag_U = 0x00000004,
-	BBCodeTag_S = 0x00000008,
-	BBCodeTag_SUP = 0x00000010,
-	BBCodeTag_SUB = 0x00000020,
-	BBCodeTag_COLOR = 0x00000040,
-	BBCodeTag_SIZE = 0x00000080,
-	BBCodeTag_group_text = 0x000000FF,
+	BBCodeTag_B           = 0x00000001,
+	BBCodeTag_I           = 0x00000002,
+	BBCodeTag_U           = 0x00000004,
+	BBCodeTag_S           = 0x00000008,
+	BBCodeTag_SUP         = 0x00000010,
+	BBCodeTag_SUB         = 0x00000020,
+	BBCodeTag_COLOR       = 0x00000040,
+	BBCodeTag_SIZE        = 0x00000080,
+	BBCodeTag_group_text  = 0x000000FF,
 
-	BBCodeTag_LEFT = 0x00001000,
-	BBCodeTag_RIGHT = 0x00002000,
-	BBCodeTag_CENTER = 0x00004000,
+	BBCodeTag_LEFT        = 0x00001000,
+	BBCodeTag_RIGHT       = 0x00002000,
+	BBCodeTag_CENTER      = 0x00004000,
 	BBCodeTag_group_align = 0x00007000,
 
-	BBCodeTag_URL = 0x00010000,
-	BBCodeTag_IMAGE = 0x00020000,
-	BBCodeTag_HR = 0x00040000,
+	BBCodeTag_URL         = 0x00010000,
+	BBCodeTag_IMAGE       = 0x00020000,
+	BBCodeTag_HR          = 0x00040000,
 
-	BBCodeTag_LIST = 0x00100000,
-	BBCodeTag_LISTITEM = 0x00200000,
-	BBCodeTag_group_list = 0x00300000,
+	BBCodeTag_LIST        = 0x00100000,
+	BBCodeTag_LISTITEM    = 0x00200000,
+	BBCodeTag_group_list  = 0x00300000,
 
-	BBCodeTag_TABLE = 0x00400000,
-	BBCodeTag_TR = 0x00800000,
-	BBCodeTag_TH = 0x01000000,
-	BBCodeTag_TD = 0x02000000,
+	BBCodeTag_TABLE       = 0x00400000,
+	BBCodeTag_TR          = 0x00800000,
+	BBCodeTag_TH          = 0x01000000,
+	BBCodeTag_TD          = 0x02000000,
 	BBCodeTag_group_table = 0x03C00000,
 
-	BBCodeTag_def_simple = BBCodeTag_B | BBCodeTag_I | BBCodeTag_U | BBCodeTag_S | BBCodeTag_SUP | BBCodeTag_SUB | BBCodeTag_COLOR | BBCodeTag_URL,
+	BBCodeTag_def_simple     = BBCodeTag_B | BBCodeTag_I | BBCodeTag_U | BBCodeTag_S | BBCodeTag_SUP | BBCodeTag_SUB |BBCodeTag_COLOR | BBCodeTag_URL,
 	BBCodeTag_def_simple_Img = BBCodeTag_def_simple | BBCodeTag_IMAGE,
-	BBCodeTag_def_extended = BBCodeTag_group_text | BBCodeTag_group_align | BBCodeTag_URL | BBCodeTag_IMAGE | BBCodeTag_HR | BBCodeTag_group_list | BBCodeTag_group_table,
+	BBCodeTag_def_extended   = BBCodeTag_group_text | BBCodeTag_group_align | BBCodeTag_URL | BBCodeTag_IMAGE | BBCodeTag_HR | BBCodeTag_group_list | BBCodeTag_group_table,
 };
 
 typedef int(*ExtraBBCodeValidator)(void* userparam, const char* tag, const char* paramValue, int paramValueSize, const char* childValue, int childValueSize);

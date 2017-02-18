@@ -20,22 +20,22 @@
 #define TS3_MIN_SECONDS_CLIENTID_REUSE 300
 
 #if defined(WIN32) || defined(__WIN32__) || defined(_WIN32)
-typedef unsigned __int16 anyID;
-typedef unsigned __int64 uint64;
-#ifdef BUILDING_DLL
-#define EXPORTDLL __declspec(dllexport)
+	typedef unsigned __int16 anyID;
+	typedef unsigned __int64 uint64;
+	#ifdef BUILDING_DLL
+		#define EXPORTDLL __declspec(dllexport)
+	#else
+		#define EXPORTDLL
+	#endif
 #else
-#define EXPORTDLL
-#endif
-#else
-#include <stdint.h>
-typedef uint16_t anyID;
-typedef uint64_t uint64;
-#ifdef BUILDING_DLL
-#define EXPORTDLL __attribute__ ((visibility("default")))
-#else
-#define EXPORTDLL
-#endif
+	#include <stdint.h>
+	typedef uint16_t anyID;
+	typedef uint64_t uint64;
+	#ifdef BUILDING_DLL
+		#define EXPORTDLL __attribute__ ((visibility("default")))
+	#else
+		#define EXPORTDLL
+	#endif
 #endif
 
 enum TalkStatus {
@@ -60,7 +60,7 @@ enum CodecEncryptionMode {
 };
 
 enum TextMessageTargetMode {
-	TextMessageTarget_CLIENT = 1,
+	TextMessageTarget_CLIENT=1,
 	TextMessageTarget_CHANNEL,
 	TextMessageTarget_SERVER,
 	TextMessageTarget_MAX
@@ -92,18 +92,18 @@ enum InputDeactivationStatus {
 };
 
 enum ReasonIdentifier {
-	REASON_NONE = 0,  //no reason data
-	REASON_MOVED = 1,  //{SectionInvoker}
-	REASON_SUBSCRIPTION = 2,  //no reason data
-	REASON_LOST_CONNECTION = 3,  //reasonmsg=reason
-	REASON_KICK_CHANNEL = 4,  //{SectionInvoker} reasonmsg=reason               //{SectionInvoker} is only added server->client
-	REASON_KICK_SERVER = 5,  //{SectionInvoker} reasonmsg=reason               //{SectionInvoker} is only added server->client
-	REASON_KICK_SERVER_BAN = 6,  //{SectionInvoker} reasonmsg=reason bantime=time  //{SectionInvoker} is only added server->client
-	REASON_SERVERSTOP = 7,  //reasonmsg=reason
-	REASON_CLIENTDISCONNECT = 8,  //reasonmsg=reason
-	REASON_CHANNELUPDATE = 9,  //no reason data
-	REASON_CHANNELEDIT = 10, //{SectionInvoker}
-	REASON_CLIENTDISCONNECT_SERVER_SHUTDOWN = 11,  //reasonmsg=reason
+	REASON_NONE                              = 0,  //no reason data
+	REASON_MOVED                             = 1,  //{SectionInvoker}
+	REASON_SUBSCRIPTION                      = 2,  //no reason data
+	REASON_LOST_CONNECTION                   = 3,  //reasonmsg=reason
+	REASON_KICK_CHANNEL                      = 4,  //{SectionInvoker} reasonmsg=reason               //{SectionInvoker} is only added server->client
+	REASON_KICK_SERVER                       = 5,  //{SectionInvoker} reasonmsg=reason               //{SectionInvoker} is only added server->client
+	REASON_KICK_SERVER_BAN                   = 6,  //{SectionInvoker} reasonmsg=reason bantime=time  //{SectionInvoker} is only added server->client
+	REASON_SERVERSTOP                        = 7,  //reasonmsg=reason
+	REASON_CLIENTDISCONNECT                  = 8,  //reasonmsg=reason
+	REASON_CHANNELUPDATE                     = 9,  //no reason data
+	REASON_CHANNELEDIT                       = 10, //{SectionInvoker}
+	REASON_CLIENTDISCONNECT_SERVER_SHUTDOWN  = 11,  //reasonmsg=reason
 };
 
 enum ChannelProperties {
@@ -225,77 +225,77 @@ enum ConnectionProperties {
 };
 
 typedef struct {
-	float x;        /* X co-ordinate in 3D space. */
-	float y;        /* Y co-ordinate in 3D space. */
-	float z;        /* Z co-ordinate in 3D space. */
+    float x;        /* X co-ordinate in 3D space. */
+    float y;        /* Y co-ordinate in 3D space. */
+    float z;        /* Z co-ordinate in 3D space. */
 } TS3_VECTOR;
 
 enum GroupWhisperType {
-	GROUPWHISPERTYPE_SERVERGROUP = 0,
-	GROUPWHISPERTYPE_CHANNELGROUP = 1,
-	GROUPWHISPERTYPE_CHANNELCOMMANDER = 2,
-	GROUPWHISPERTYPE_ALLCLIENTS = 3,
+	GROUPWHISPERTYPE_SERVERGROUP        = 0,
+	GROUPWHISPERTYPE_CHANNELGROUP       = 1,
+	GROUPWHISPERTYPE_CHANNELCOMMANDER   = 2,
+	GROUPWHISPERTYPE_ALLCLIENTS         = 3,
 	GROUPWHISPERTYPE_ENDMARKER,
 };
 
 enum GroupWhisperTargetMode {
-	GROUPWHISPERTARGETMODE_ALL = 0,
-	GROUPWHISPERTARGETMODE_CURRENTCHANNEL = 1,
-	GROUPWHISPERTARGETMODE_PARENTCHANNEL = 2,
-	GROUPWHISPERTARGETMODE_ALLPARENTCHANNELS = 3,
-	GROUPWHISPERTARGETMODE_CHANNELFAMILY = 4,
+	GROUPWHISPERTARGETMODE_ALL                   = 0,
+	GROUPWHISPERTARGETMODE_CURRENTCHANNEL        = 1,
+	GROUPWHISPERTARGETMODE_PARENTCHANNEL         = 2,
+	GROUPWHISPERTARGETMODE_ALLPARENTCHANNELS     = 3,
+	GROUPWHISPERTARGETMODE_CHANNELFAMILY         = 4,
 	GROUPWHISPERTARGETMODE_ANCESTORCHANNELFAMILY = 5,
-	GROUPWHISPERTARGETMODE_SUBCHANNELS = 6,
+	GROUPWHISPERTARGETMODE_SUBCHANNELS           = 6,
 	GROUPWHISPERTARGETMODE_ENDMARKER,
 };
 
-enum MonoSoundDestination {
-	MONO_SOUND_DESTINATION_ALL = 0, /* Send mono sound to all available speakers */
-	MONO_SOUND_DESTINATION_FRONT_CENTER = 1, /* Send mono sound to front center speaker if available */
-	MONO_SOUND_DESTINATION_FRONT_LEFT_AND_RIGHT = 2  /* Send mono sound to front left/right speakers if available */
+enum MonoSoundDestination{ 
+  MONO_SOUND_DESTINATION_ALL                  =0, /* Send mono sound to all available speakers */
+  MONO_SOUND_DESTINATION_FRONT_CENTER         =1, /* Send mono sound to front center speaker if available */
+  MONO_SOUND_DESTINATION_FRONT_LEFT_AND_RIGHT =2  /* Send mono sound to front left/right speakers if available */
 };
 
 enum SecuritySaltOptions {
-	SECURITY_SALT_CHECK_NICKNAME = 1, /* put nickname into security hash */
+	SECURITY_SALT_CHECK_NICKNAME  = 1, /* put nickname into security hash */
 	SECURITY_SALT_CHECK_META_DATA = 2  /* put (game)meta data into security hash */
 };
 
 /*this enum is used to disable client commands on the server*/
-enum ClientCommand {
-	CLIENT_COMMAND_requestConnectionInfo = 0,
-	CLIENT_COMMAND_requestClientMove = 1,
-	CLIENT_COMMAND_requestXXMuteClients = 2,
-	CLIENT_COMMAND_requestClientKickFromXXX = 3,
-	CLIENT_COMMAND_flushChannelCreation = 4,
-	CLIENT_COMMAND_flushChannelUpdates = 5,
-	CLIENT_COMMAND_requestChannelMove = 6,
-	CLIENT_COMMAND_requestChannelDelete = 7,
-	CLIENT_COMMAND_requestChannelDescription = 8,
-	CLIENT_COMMAND_requestChannelXXSubscribeXXX = 9,
-	CLIENT_COMMAND_requestServerConnectionInfo = 10,
-	CLIENT_COMMAND_requestSendXXXTextMsg = 11,
-	CLIENT_COMMAND_filetransfers = 12,
+enum ClientCommand{
+	CLIENT_COMMAND_requestConnectionInfo        =  0,
+	CLIENT_COMMAND_requestClientMove            =  1,
+	CLIENT_COMMAND_requestXXMuteClients         =  2,
+	CLIENT_COMMAND_requestClientKickFromXXX     =  3,
+	CLIENT_COMMAND_flushChannelCreation         =  4,
+	CLIENT_COMMAND_flushChannelUpdates          =  5,
+	CLIENT_COMMAND_requestChannelMove           =  6,
+	CLIENT_COMMAND_requestChannelDelete         =  7,
+	CLIENT_COMMAND_requestChannelDescription    =  8,
+	CLIENT_COMMAND_requestChannelXXSubscribeXXX =  9,
+	CLIENT_COMMAND_requestServerConnectionInfo  = 10,
+	CLIENT_COMMAND_requestSendXXXTextMsg        = 11,
+	CLIENT_COMMAND_filetransfers                = 12,
 	CLIENT_COMMAND_ENDMARKER
 };
 
 /* Access Control List*/
-enum ACLType {
-	ACL_NONE = 0,
+enum ACLType{
+	ACL_NONE       = 0,
 	ACL_WHITE_LIST = 1,
 	ACL_BLACK_LIST = 2
 };
 
 /* file transfer actions*/
-enum FTAction {
-	FT_INIT_SERVER = 0,
+enum FTAction{
+	FT_INIT_SERVER  = 0,
 	FT_INIT_CHANNEL = 1,
-	FT_UPLOAD = 2,
-	FT_DOWNLOAD = 3,
-	FT_DELETE = 4,
-	FT_CREATEDIR = 5,
-	FT_RENAME = 6,
-	FT_FILELIST = 7,
-	FT_FILEINFO = 8
+	FT_UPLOAD       = 2,
+	FT_DOWNLOAD     = 3,
+	FT_DELETE       = 4,
+	FT_CREATEDIR    = 5,
+	FT_RENAME       = 6,
+	FT_FILELIST     = 7,
+	FT_FILEINFO     = 8
 };
 
 /* file transfer status */
@@ -313,25 +313,25 @@ enum {
 
 /* some structs to handle variables in callbacks */
 #define MAX_VARIABLES_EXPORT_COUNT 64
-struct VariablesExportItem {
+struct VariablesExportItem{
 	unsigned char itemIsValid;    /* This item has valid values. ignore this item if 0 */
 	unsigned char proposedIsSet;  /* The value in proposed is set. if 0 ignore proposed */
 	const char* current;          /* current value (stored in memory) */
 	const char* proposed;         /* New value to change to (const, so no updates please) */
 };
 
-struct VariablesExport {
+struct VariablesExport{
 	struct VariablesExportItem items[MAX_VARIABLES_EXPORT_COUNT];
 };
 
-struct ClientMiniExport {
+struct ClientMiniExport{
 	anyID ID;
 	uint64 channel;
 	const char* ident;
 	const char* nickname;
 };
 
-struct TransformFilePathExport {
+struct TransformFilePathExport{
 	uint64 channel;
 	const char* filename;
 	int action;
@@ -339,13 +339,13 @@ struct TransformFilePathExport {
 	int channelPathMaxSize;
 };
 
-struct TransformFilePathExportReturns {
+struct TransformFilePathExportReturns{
 	char* transformedFileName;
 	char* channelPath;
 	int logFileAction;
 };
 
-struct FileTransferCallbackExport {
+struct FileTransferCallbackExport{
 	anyID clientID;
 	anyID transferID;
 	anyID remoteTransferID;
@@ -358,6 +358,7 @@ struct FileTransferCallbackExport {
 
 /*define for file transfer bandwith limits*/
 #define BANDWIDTH_LIMIT_UNLIMITED 0xFFFFFFFFFFFFFFFFll
+
 
 /*defines for speaker locations used by some sound callbacks*/
 #ifndef SPEAKER_FRONT_LEFT
