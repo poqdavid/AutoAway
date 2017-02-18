@@ -1,0 +1,9 @@
+*.user
+*.sdf
+*.opensdf
+*.suo
+*.db
+AutoAway/unused/
+AutoAway/x64/
+AutoAway/Win32/
+AutoAway/GeneratedFiles/
