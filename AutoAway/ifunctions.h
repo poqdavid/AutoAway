@@ -28,8 +28,10 @@
 #include "AutoAwayMonitorThread.h"
 #include <QJsonDocument>
 #include <QFile>
+#include <QFileInfo>
 #include <QJsonObject>
 #include <QString>
+#include <QTextStream>
 
 extern "C" {
 	extern AutoAwayMonitorThread autoawaymonitorthread;
@@ -37,6 +39,7 @@ extern "C" {
 	extern QJsonDocument settingsData;
 	extern QString settingPath;
 	void tgAFK(bool afkoption);
+    bool fileExists(QString path);
 	int readJsonVal(QJsonDocument document, QString name);
 	void setJsonVal(QString name, QJsonValue val2);
 	QJsonDocument loadJSON(QString fileName);

@@ -38,6 +38,11 @@ void tgAFK(bool afkoption)
 	isSetToAFK = afkoption;
 }
 
+bool fileExists(QString path) {
+	QFileInfo check_file(path);
+	return check_file.exists() && check_file.isFile();
+}
+
 QJsonDocument loadJSON(QString fileName) {
 	QFile jsonFile(fileName);
 	jsonFile.open(QFile::ReadOnly);
