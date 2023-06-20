@@ -32,7 +32,7 @@ Settings settings;
 #define _strcpy(dest, destSize, src) { strncpy(dest, src, destSize-1); (dest)[destSize-1] = '\0'; }
 #endif
 
-#define PLUGIN_API_VERSION 23
+#define PLUGIN_API_VERSION 26
 
 #define PATH_BUFSIZE 512
 #define COMMAND_BUFSIZE 128
@@ -70,11 +70,16 @@ static int wcharToUtf8(const wchar_t* str, char** result) {
 const char* ts3plugin_name() {
 #ifdef _WIN32
 	/* TeamSpeak expects UTF-8 encoded characters. Following demonstrates a possibility how to convert UTF-16 wchar_t into UTF-8. */
-	static char* result = NULL;  /* Static variable so it's allocated only once */
-	if (!result) {
+	static char result[64] = { 0 };  /* Static variable so it's allocated only once */
+	if (!result[0]) {
 		const wchar_t* name = L"AutoAway";
-		if (wcharToUtf8(name, &result) == -1) {  /* Convert name into UTF-8 encoded result */
-			result = "AutoAway";  /* Conversion failed, fallback here */
+		char* utf8name = NULL;
+		if (wcharToUtf8(name, &utf8name) == -1) {  /* Convert name into UTF-8 encoded result */
+			strcpy(result, "AutoAway");  /* Conversion failed, fallback here */
+		}
+		else {
+			strcpy(result, utf8name); /* Copy the converted name to the result buffer */
+			free(utf8name); /* Free the allocated memory for the converted name */
 		}
 	}
 	return result;
@@ -85,7 +90,7 @@ const char* ts3plugin_name() {
 
 /* Plugin version */
 const char* ts3plugin_version() {
-	return "1.5";
+	return "1.6";
 }
 
 /* Plugin API version. Must be the same as the clients API major version, else the plugin fails to load. */

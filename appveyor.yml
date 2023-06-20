@@ -1,0 +1,31 @@
+version: 1.{build}
+image: Visual Studio 2019
+
+install:
+  - git submodule init
+  - git submodule update
+
+configuration: Release
+
+environment:
+  matrix:
+    - QTDIR: 'C:\Qt\5.15.2\msvc2019_64'
+      ARCH: x64
+    - QTDIR: 'C:\Qt\5.15.2\msvc2019'
+      ARCH: Win32
+
+before_build:
+  - ps: |
+      $env:Path += ";${env:QTDIR}\bin"
+      $env:QMAKE = "${env:QTDIR}\bin\qmake.exe"
+      $env:CONFIGURATION = "Release"
+      $env:PLATFORM = "${env:ARCH}"
+      $env:QMAKESPEC = "${env:QTDIR}\mkspecs\win32-msvc"
+
+build_script:
+  - '${env:QMAKE} -r'
+  - 'msbuild AutoAway.sln /p:Configuration=${env:CONFIGURATION} /p:Platform=${env:PLATFORM} /m /verbosity:minimal /p:QtMsBuildPath="${env:QTDIR}\lib" /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"'
+
+build:
+  parallel: true
+  verbosity: minimal

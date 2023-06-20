@@ -13,7 +13,7 @@ public:
 	~SettingsDialog();
 private:
 	Ui::SettingsDialog ui;
-	protected slots:
+protected slots:
 	void accept();
 	void reject();
 };

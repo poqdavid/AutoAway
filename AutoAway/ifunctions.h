@@ -33,23 +33,21 @@
 #include <QString>
 #include <QTextStream>
 
-extern "C" {
-	extern AutoAwayMonitorThread autoawaymonitorthread;
-	extern TS3Functions ts3Functions;
-	extern QJsonDocument settingsData;
-	extern QString settingPath;
-	void tgAFK(bool afkoption);
-    bool fileExists(QString path);
-	int readJsonVal(QJsonDocument document, QString name);
-	void setJsonVal(QString name, QJsonValue val2);
-	QJsonDocument loadJSON(QString fileName);
-	void saveJSON(QJsonDocument document, QString fileName);
-	int secondstomins(int secs);
-	int minstoseconds(int mins);
-	extern struct Settings {
-		int IdleTimeinSec;
-	};
+extern AutoAwayMonitorThread autoawaymonitorthread;
+extern TS3Functions ts3Functions;
+extern QJsonDocument settingsData;
+extern QString settingPath;
+void tgAFK(bool afkoption);
+bool fileExists(QString path);
+int readJsonVal(QJsonDocument document, QString name);
+void setJsonVal(QString name, QJsonValue val2);
+QJsonDocument loadJSON(QString fileName);
+void saveJSON(QJsonDocument document, QString fileName);
+int secondstomins(int secs);
+int minstoseconds(int mins);
+extern struct Settings {
+	int IdleTimeinSec;
+} settings;
 
-	extern Settings settings;
-	extern bool isSetToAFK;
-}
+extern Settings settings;
+extern bool isSetToAFK;

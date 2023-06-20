@@ -19,37 +19,25 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Generated Files">
-      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
-      <Extensions>moc;h;cpp</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
       <ParseFiles>true</ParseFiles>
     </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{1a816142-e271-4c41-b2a2-f7904c2d247d}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+    </Filter>
     <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{1ddc5b7e-1c7b-4dcd-b919-36e3cd571971}</UniqueIdentifier>
+      <UniqueIdentifier>{846a928e-86ad-4f2a-9b44-7fa60b196ca6}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{941c16ef-8420-41de-a28f-cb17dda6ca73}</UniqueIdentifier>
+      <UniqueIdentifier>{7455a779-a7ab-4b5e-8674-487aef00940d}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GeneratedFiles\Debug\moc_SettingsDialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_SettingsDialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_SettingsDialog.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="SettingsDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -59,29 +47,11 @@
     <ClCompile Include="AutoAwayMonitorThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_AutoAwayMonitorThread.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_AutoAwayMonitorThread.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="AutoAway.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="SettingsDialog.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="SettingsDialog.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="SettingsDialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="AutoAwayMonitorThread.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="ifunctions.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -109,9 +79,6 @@
     <CustomBuild Include="include\ts3_functions.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\ui_SettingsDialog.h">
-      <Filter>Generated Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="AutoAway.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -121,5 +88,31 @@
     <None Include="..\.gitignore" />
     <None Include="..\LICENSE.md" />
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="AutoAwayMonitorThread.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SettingsDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="SettingsDialog.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="SettingsDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AutoAway.rc" />
   </ItemGroup>
 </Project>
