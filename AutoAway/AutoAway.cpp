@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include "teamspeak/public_definitions.h"
 #include "teamspeak/public_errors.h"
 #include "teamspeak/public_errors_rare.h"
-#include "teamspeak/public_definitions.h"
 #include "teamspeak/public_rare_definitions.h"
-#include "teamspeak/clientlib_publicdefinitions.h"
 #include "ts3_functions.h"
+
 #include "AutoAway.h"
 #include "ifunctions.h"
 #include "SettingsDialog.h"
@@ -32,19 +32,19 @@ Settings settings;
 #define _strcpy(dest, destSize, src) { strncpy(dest, src, destSize-1); (dest)[destSize-1] = '\0'; }
 #endif
 
-#define PLUGIN_API_VERSION 26
+constexpr auto PLUGIN_API_VERSION = 26;
 
-#define PATH_BUFSIZE 512
-#define COMMAND_BUFSIZE 128
-#define INFODATA_BUFSIZE 128
-#define SERVERINFO_BUFSIZE 256
-#define CHANNELINFO_BUFSIZE 512
-#define RETURNCODE_BUFSIZE 128
-#define REQUESTCLIENTMOVERETURNCODES_SLOTS 5
+constexpr auto PATH_BUFSIZE = 512;
+constexpr auto COMMAND_BUFSIZE = 128;
+constexpr auto INFODATA_BUFSIZE = 128;
+constexpr auto SERVERINFO_BUFSIZE = 256;
+constexpr auto CHANNELINFO_BUFSIZE = 512;
+constexpr auto RETURNCODE_BUFSIZE = 128;
+constexpr auto REQUESTCLIENTMOVERETURNCODES_SLOTS = 5;
 
-#define PLUGIN_THREAD_TIMEOUT 1000
+constexpr auto PLUGIN_THREAD_TIMEOUT = 1000;
 
-#define TIMER_MSEC 10000
+constexpr auto TIMER_MSEC = 10000;
 
 static char* pluginID = NULL;
 

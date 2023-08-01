@@ -85,6 +85,12 @@
     <QtInstall>5.15.2_msvc2019</QtInstall>
     <QtModules>core;gui;widgets;winextras</QtModules>
   </PropertyGroup>
+  <PropertyGroup>
+    <DefaultVersionMajor>1</DefaultVersionMajor>
+    <DefaultVersionMinor>0</DefaultVersionMinor>
+    <DefaultVersionPatch>0</DefaultVersionPatch>
+    <DefaultVersionBuild>0</DefaultVersionBuild>
+  </PropertyGroup>
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
     <Import Project="$(QtMsBuild)\qt.props" />
   </ImportGroup>
@@ -182,9 +188,8 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>COPY /Y "$(ProjectDir)package.ini"  "$(SolutionDir)Release\"
-COPY /Y "$(OutDir)AutoAway_win64.dll"  "$(SolutionDir)Release\plugins\"
-</Command>
+      <Command>COPY /Y "$(ProjectDir)package.ini"  "$(SolutionDir)Publish\data\"
+COPY /Y "$(OutDir)$(ProjectName)_win64.dll"  "$(SolutionDir)Publish\data\plugins\"</Command>
     </PostBuildEvent>
     <QtMoc>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -206,6 +211,9 @@ COPY /Y "$(OutDir)AutoAway_win64.dll"  "$(SolutionDir)Release\plugins\"
       <QtUicDir>.\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <ResourceCompile>
+      <PreprocessorDefinitions>VERSION_MAJOR=$([MSBuild]::ValueOrDefault('$(VERSION_MAJOR)', '$(DefaultVersionMajor)'));VERSION_MINOR=$([MSBuild]::ValueOrDefault('$(VERSION_MINOR)', '$(DefaultVersionMinor)'));VERSION_PATCH=$([MSBuild]::ValueOrDefault('$(VERSION_PATCH)', '$(DefaultVersionPatch)'));VERSION_BUILD=$([MSBuild]::ValueOrDefault('$(VERSION_BUILD)', '$(DefaultVersionBuild)'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -225,8 +233,8 @@ COPY /Y "$(OutDir)AutoAway_win64.dll"  "$(SolutionDir)Release\plugins\"
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>COPY /Y "$(ProjectDir)package.ini"  "$(SolutionDir)Release\"
-COPY /Y "$(OutDir)AutoAway_win32.dll"  "$(SolutionDir)Release\plugins\"</Command>
+      <Command>COPY /Y "$(ProjectDir)package.ini"  "$(SolutionDir)Publish\data\"
+COPY /Y "$(OutDir)$(ProjectName)_win32.dll"  "$(SolutionDir)Publish\data\plugins\"</Command>
     </PostBuildEvent>
     <QtMoc>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
@@ -248,6 +256,9 @@ COPY /Y "$(OutDir)AutoAway_win32.dll"  "$(SolutionDir)Release\plugins\"</Command
       <QtUicDir>.\GeneratedFiles</QtUicDir>
       <QtUicFileName>ui_%(Filename).h</QtUicFileName>
     </QtUic>
+    <ResourceCompile>
+      <PreprocessorDefinitions>VERSION_MAJOR=$([MSBuild]::ValueOrDefault('$(VERSION_MAJOR)', '$(DefaultVersionMajor)'));VERSION_MINOR=$([MSBuild]::ValueOrDefault('$(VERSION_MINOR)', '$(DefaultVersionMinor)'));VERSION_PATCH=$([MSBuild]::ValueOrDefault('$(VERSION_PATCH)', '$(DefaultVersionPatch)'));VERSION_BUILD=$([MSBuild]::ValueOrDefault('$(VERSION_BUILD)', '$(DefaultVersionBuild)'));%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AutoAwayMonitorThread.cpp" />
